@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<title>Orders Manager</title>
+<body>
+<div>
+<center><h1 style="color:red">Perform operations on Orders</h1></center>
+<form action = "/home" method = "POST" style="background-color: aqua;">
+    <button type="submit" style="position:relative">Home</button>
+</form>
+<center>
+<script>
+  function validateForm() {
+    var x = document.forms["myf"]["id"].value;
+    if (x == "" || x == null) {
+      alert("input can't be empty");
+      return false;
+    }
+  }
+  </script>
+
+
+<form name='myf'action='/orders' method="POST">
+<p>Enter order id<input type="text"   required name="id"></p>
+<input type="submit" value="submit" style="background-color: aqua;">
+</form> 
+<html>
+  <br>
+<center><body style="background-color: aqua;">
+  <table border = 2 style="width: 80%; border: 1px solid black">
+         {% for key in result %}
+         <tr>
+         {% for m,s in key.items() %}
+            <tr>
+               <th> {{ m ,  s }} </th>
+            </tr>
+            
+         {% endfor %}
+         </tr>
+         {% endfor %}
+        </table>
+      
+   </body>
+</html>
+
+<h3>Click below to update Order Details</h3>
+<form name='myf'action='/oselecte' method="POST">
+  <p style="color: rgb(5, 19, 19);">Enter id to update<input type="text"  required name="id"></p>
+  <input type="submit" value="submit" style="background-color: aqua;">
+  </form> 
+<form action = "/oupdat" method = "POST" style="color: rgb(1, 10, 10);"> 
+  {% if bookies!=0%} 
+  {% for ro in bookies%}
+
+  <h1 style="color: rgb(1, 5, 8);"> Edit values to update orders</h1>
+  <p> OrderID<input type = "text" name = "id" value="{{ro[0]}}" required style="width:300px;" /></p>  
+  <p>CustomerID <input type = "text" name = "productname" value="{{ro[1]}}"  required  style="width:300px;" /></p>  
+  <p>EmployeeID <input type = "text" name = "sid" value="{{ro[2]}}"  style="width:300px;" /></p>  
+  <p>OrderDate <input type = "data" name = "cid" value="{{ro[3]}}"  style="width:300px;" /></p> 
+  <p>RequiredDate<input type = "data" name = "Qunit" value="{{ro[4]}}"  style="width:300px;" /></p>
+  <p>ShippedDate <input type = "data" name = "uprice" value="{{ro[5]}}"  style="width:300px;" /></p> 
+  <p>ShipVia<input type = "text" name = "ustock" value="{{ro[6]}}"  style="width:300px;" /></p>
+  <p>Freight<input type = "text" name = "uorder" value="{{ro[7]}}"  style="width:300px;" /></p>
+  <p>ShipName <input type = "text" name = "Relevel" value="{{ro[8]}}"  style="width:300px;" /></p>  
+  <p>ShipAddress<input type = "text" name = "disc" value="{{ro[9]}}"  style="width:300px;" /></p> 
+  <p>ShipCity<input type = "text" name = "disc" value="{{ro[10]}}"  style="width:300px;" /></p>  
+  <p>ShipRegion<input type = "text" name = "disc" value="{{ro[11]}}"  style="width:300px;" /></p>  
+  <p>ShipPostalCode<input type = "number" name = "disc" value="{{ro[12]}}"  style="width:300px;" /></p>         
+  <p>ShipCountry<input type = "text" name = "disc" value="{{ro[13]}}"  style="width:300px;" /></p>               
+       
+
+   <button onclick="myFunct()" style="background-color: rgb(0, 195, 255);">submit</button>
+    <script>
+        function myFunct() {
+          alert("Update Succesful");
+        }
+        </script>
+   {% endfor %}
+   {% else %}
+      <script style="color: red;">
+        alert('key not found');
+      
+      </script>
+    {% endif %}
+</form>  
+
+<h1 style="color: rgb(5, 14, 22);">Click here to add Info</h1>
+<form action = "/inserto" method = "POST" style="color:red;" onsubmit="return my()">  
+  
+    <p> OrderID<input type = "text" name = "id"  required style="width:300px;" /></p>  
+  <p>CustomerID <input type = "text" name = "productname"   required  style="width:300px;" /></p>  
+  <p>EmployeeID <input type = "text" name = "sid"  style="width:300px;" /></p>  
+  <p>OrderDate <input type = "data" name = "cid"  style="width:300px;" /></p> 
+  <p>RequiredDate<input type = "data" name = "Qunit"  style="width:300px;" /></p>
+  <p>ShippedDate <input type = "data" name = "uprice"  style="width:300px;" /></p> 
+  <p>ShipVia<input type = "text" name = "ustock"   style="width:300px;" /></p>
+  <p>Freight<input type = "text" name = "uorder"   style="width:300px;" /></p>
+  <p>ShipName <input type = "text" name = "Relevel"   style="width:300px;" /></p>  
+  <p>ShipAddress<input type = "text" name = "disc" style="width:300px;" /></p> 
+  <p>ShipCity<input type = "text" name = "disc" style="width:300px;" /></p>  
+  <p>ShipRegion<input type = "text" name = "disc"  style="width:300px;" /></p>  
+  <p>ShipPostalCode<input type = "number" name = "disc"  style="width:300px;" /></p>         
+  <p>ShipCountry<input type = "text" name = "disc"  style="width:300px;" /></p>            
+   <p><input type = "submit" value = "submit" style="background-color: aqua;" /></p> 
+   <script>
+     function my(){
+       alert("added succesfully")
+     }
+   </script> 
+</form>  
+
+<script>
+  function validateFm() {
+    var x = document.forms["ls"]["delete"].value;
+    if (x == "" || x == null) {
+      alert("input can't be empty");
+      return false;
+    }
+    else{
+      alert("Deletion Succesful");
+      return True;
+    }
+  }
+  </script>
+
+</div>
+</body>

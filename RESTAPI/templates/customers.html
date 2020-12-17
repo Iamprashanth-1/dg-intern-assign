@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<title>Customer details Manager</title>
+<body>
+<div>
+<center><h1 style="color:red">Perform operations on Customers</h1></center>
+<form action = "/home" method = "POST" style="background-color: aqua;">
+  <button type="submit" style="position:relative">Home</button>
+</form>
+<center>
+<script>
+  function validateForm() {
+    var x = document.forms["myf"]["id"].value;
+    if (x == "" || x == null) {
+      alert("input can't be empty");
+      return false;
+    }
+  }
+  </script>
+
+<form name='myf'action='/customers' method="POST">
+<p>Enter Customer id<input type="text"   required name="id"></p>
+<input type="submit" value="submit" style="background-color: aqua;">
+</form> 
+<html>
+  <br>
+<center><body style="background-color: aqua;">
+  <table border = 2 style="width: 80%; border: 1px solid black">
+         {% for key in result %}
+         <tr>
+         {% for m,s in key.items() %}
+            <tr>
+               <th> {{ m ,  s }} </th>
+            </tr>
+            
+         {% endfor %}
+         </tr>
+         {% endfor %}
+        </table>
+      
+   </body>
+</html>
+
+<h3>Click below to update Product Details</h3>
+<form name='myf'action='/cselecte' method="POST">
+  <p style="color: rgb(5, 19, 19);">Enter id to update<input type="text"  required name="id"></p>
+  <input type="submit" value="submit" style="background-color: aqua;">
+  </form> 
+<form action = "/cupdat" method = "POST" style="color: rgb(1, 10, 10);"> 
+  {% if bookie!=0%} 
+  {% for ro in bookie%}
+
+  <h1 style="color: rgb(1, 5, 8);"> Edit values to update books</h1>
+  <p> CustomerID<input type = "text" name = "id" value="{{ro[0]}}" required style="width:300px;" /></p>  
+  <p>CompanyName <input type = "text" name = "productname" value="{{ro[1]}}"  required  style="width:300px;" /></p>  
+  <p>ContactName <input type = "text" name = "sid" value="{{ro[2]}}"  style="width:300px;" /></p>  
+  <p>ContactTitle <input type = "text" name = "cid" value="{{ro[3]}}"  style="width:300px;" /></p> 
+  <p>Address<input type = "text" name = "Qunit" value="{{ro[4]}}"  style="width:300px;" /></p>
+  <p>City <input type = "text" name = "uprice" value="{{ro[5]}}"  style="width:300px;" /></p> 
+  <p>Region<input type = "text" name = "ustock" value="{{ro[6]}}"  style="width:300px;" /></p>
+  <p>PostalCode<input type = "text" name = "uorder" value="{{ro[7]}}"  style="width:300px;" /></p>
+  <p>Country <input type = "text" name = "Relevel" value="{{ro[8]}}"  style="width:300px;" /></p>  
+  <p>Phone<input type = "text" name = "disc" value="{{ro[9]}}"  style="width:300px;" /></p> 
+  <p>Fax<input type = "text" name = "disc" value="{{ro[10]}}"  style="width:300px;" /></p>         
+   <button onclick="myFunct()" style="background-color: rgb(0, 195, 255);">submit</button>
+    <script>
+        function myFunct() {
+          alert("Update Succesful");
+        }
+        </script>
+   {% endfor %}
+   {% else %}
+      <script style="color: red;">
+        alert('key not found');
+      
+      </script>
+    {% endif %}
+</form>  
+
+<h1 style="color: rgb(5, 14, 22);">Click here to add Info</h1>
+<form action = "/insertc" method = "POST" style="color:red;" onsubmit="return my()">  
+  
+   <p>CustomerID <input type = "text" name = "id" required style="width:300px;" /></p>  
+   <p>CompanyName <input type = "text" name = "productname" required  style="width:300px;" /></p>  
+   <p>ContactName <input type = "text" name = "sid"  style="width:300px;" /></p>  
+   <p>ContactTitle <input type = "text" name = "cid"  style="width:300px;" /></p> 
+   <p>Address<input type = "text" name = "Qunit"  style="width:300px;" /></p>
+   <p>City <input type = "text" name = "uprice"  style="width:300px;" /></p> 
+   <p>Region <input type = "text" name = "ustock"  style="width:300px;" /></p>
+   <p>PostalCode<input type = "number" name = "uorder"  style="width:300px;" /></p>
+   <p>Country <input type = "number" name = "Relevel"  style="width:300px;" /></p>  
+   <p>Phone<input type = "number" name = "disc"  style="width:300px;" /></p>  
+   <p>Fax<input type = "number" name = "disc"  style="width:300px;" /></p>                  
+   <p><input type = "submit" value = "submit" style="background-color: aqua;" /></p> 
+   <script>
+     function my(){
+       alert("added succesfully")
+     }
+   </script> 
+</form>  
+
+<script>
+  function validateFm() {
+    var x = document.forms["ls"]["delete"].value;
+    if (x == "" || x == null) {
+      alert("input can't be empty");
+      return false;
+    }
+    else{
+      alert("Deletion Succesful");
+      return True;
+    }
+  }
+  </script>
+
+</div>
+</body>

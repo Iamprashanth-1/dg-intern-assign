@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<title>history manager</title>
+<body>
+<div>
+<center><h1 style="color:red">View your Order history</h1></center>
+<form action = "/home" method = "POST" style="background-color: aqua;">
+    <button type="submit" style="position:relative">Home</button>
+</form>
+<center>
+<script>
+  function validateForm() {
+    var x = document.forms["myf"]["id"].value;
+    if (x == "" || x == null) {
+      alert("input can't be empty");
+      return false;
+    }
+  }
+  </script>
+
+
+<form name='myf'action='/view' method="POST">
+<p>Enter order id<input type="text"   required name="id"></p>
+<input type="submit" value="submit" style="background-color: aqua;">
+</form> 
+<html>
+  <br>
+<center><body style="background-color: aqua;">
+  <table border = 2 style="width: 80%; border: 1px solid black">
+         {% for key in result %}
+         <tr>
+         {% for m,s in key.items() %}
+            <tr>
+               <th> {{ m ,  s }} </th>
+            </tr>
+            
+         {% endfor %}
+         </tr>
+         {% endfor %}
+        </table>
+      
+   </body>
+</html>
+</center>
+</div>
+</body>
